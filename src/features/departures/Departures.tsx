@@ -1,25 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
+import { useDepartures } from "./useDepartures";
 
 const SITES = [
   { id: 3470, name: "Brotorp" },
   { id: 3549, name: "Råsta" },
 ];
 
-type Departure = {
-  destination: string;
-  display: string;
-  line: { designation: string; transport_mode: string };
-};
-
-const fetchDepartures = async (siteId: number): Promise<Departure[]> => {
-  const res = await fetch(
-    `https://transport.integration.sl.se/v1/sites/${siteId}/departures`,
-  );
-  const data = await res.json();
-  return data.departures ?? [];
-};
-
 function getTimeColor(display: string): string {
+  const lower = display.toLowerCase();
+  if (lower === "nu") return "#ff5555";
   const match = display.match(/^(\d+)\s*min/);
   if (!match) return "#64ffda";
   const mins = parseInt(match[1]);
@@ -28,12 +16,12 @@ function getTimeColor(display: string): string {
   return "#64ffda";
 }
 
+function formatDisplay(display: string): string {
+  return display.toLowerCase() === "nu" ? "Now" : display;
+}
+
 function SiteDepartures({ id, name }: { id: number; name: string }) {
-  const { data, isError } = useQuery({
-    queryKey: ["departures", id],
-    queryFn: () => fetchDepartures(id),
-    refetchInterval: 30_000,
-  });
+  const { data, isError } = useDepartures(id);
 
   if (isError) return <p>Failed to load {name}</p>;
 
@@ -53,7 +41,7 @@ function SiteDepartures({ id, name }: { id: number; name: string }) {
             <tr key={i}>
               <td>{d.line.designation}</td>
               <td>{d.destination}</td>
-              <td style={{ color: getTimeColor(d.display) }}>{d.display}</td>
+              <td style={{ color: getTimeColor(d.display) }}>{formatDisplay(d.display)}</td>
             </tr>
           ))}
         </tbody>

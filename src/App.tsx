@@ -1,4 +1,4 @@
-import Departures from "./components/Departures/Departures";
+import Departures from "./features/departures/Departures";
 
 export default function App() {
   return (

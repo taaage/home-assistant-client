@@ -40,8 +40,12 @@ h2 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.departures th:last-child,
 .departures td:last-child {
   text-align: right;
+}
+
+.departures td:last-child {
   color: #d1a2f9;
   font-weight: 600;
 }

@@ -1,40 +1,45 @@
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
-const SITE_ID = 3470;
-const API_URL = `https://transport.integration.sl.se/v1/sites/${SITE_ID}/departures`;
-const REFRESH_INTERVAL = 30_000;
+const SITES = [
+  { id: 3470, name: "Brotorp" },
+  { id: 3549, name: "Råsta" },
+];
 
 type Departure = {
   destination: string;
   display: string;
   line: { designation: string; transport_mode: string };
-  direction_code: number;
 };
 
-export default function Departures() {
-  const [departures, setDepartures] = useState<Departure[]>([]);
-  const [error, setError] = useState(false);
+const fetchDepartures = async (siteId: number): Promise<Departure[]> => {
+  const res = await fetch(
+    `https://transport.integration.sl.se/v1/sites/${siteId}/departures`,
+  );
+  const data = await res.json();
+  return data.departures ?? [];
+};
 
-  useEffect(() => {
-    const fetchDepartures = () =>
-      fetch(API_URL)
-        .then((r) => r.json())
-        .then((data) => {
-          setDepartures(data.departures ?? []);
-          setError(false);
-        })
-        .catch(() => setError(true));
+function getTimeColor(display: string): string {
+  const match = display.match(/^(\d+)\s*min/);
+  if (!match) return "#64ffda";
+  const mins = parseInt(match[1]);
+  if (mins < 3) return "#ff5555";
+  if (mins <= 10) return "#ffdd57";
+  return "#64ffda";
+}
 
-    fetchDepartures();
-    const id = setInterval(fetchDepartures, REFRESH_INTERVAL);
-    return () => clearInterval(id);
-  }, []);
+function SiteDepartures({ id, name }: { id: number; name: string }) {
+  const { data, isError } = useQuery({
+    queryKey: ["departures", id],
+    queryFn: () => fetchDepartures(id),
+    refetchInterval: 30_000,
+  });
 
-  if (error) return <p>Failed to load departures</p>;
+  if (isError) return <p>Failed to load {name}</p>;
 
   return (
-    <div className="departures">
-      <h2>🚌 Brotorp</h2>
+    <div>
+      <h2>🚌 {name}</h2>
       <table>
         <thead>
           <tr>
@@ -44,15 +49,25 @@ export default function Departures() {
           </tr>
         </thead>
         <tbody>
-          {departures.slice(0, 10).map((d, i) => (
+          {data?.slice(0, 10).map((d, i) => (
             <tr key={i}>
               <td>{d.line.designation}</td>
               <td>{d.destination}</td>
-              <td>{d.display}</td>
+              <td style={{ color: getTimeColor(d.display) }}>{d.display}</td>
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
+  );
+}
+
+export default function Departures() {
+  return (
+    <div className="departures">
+      {SITES.map((site) => (
+        <SiteDepartures key={site.id} {...site} />
+      ))}
     </div>
   );
 }

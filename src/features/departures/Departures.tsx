@@ -6,22 +6,22 @@ const SITES = [
 ];
 
 function getTimeColor(display: string): string {
-  const lower = display.toLowerCase();
-  if (lower === "nu") return "#ff5555";
-  const match = display.match(/^(\d+)\s*min/);
-  if (!match) return "#64ffda";
-  const mins = parseInt(match[1]);
-  if (mins < 3) return "#ff5555";
-  if (mins <= 10) return "#ffdd57";
-  return "#64ffda";
+  if (display === "Nu") return "#ff5555";
+  if (display.includes("min")) {
+    const mins = parseInt(display);
+    if (mins <= 3) return "#ff5555";
+    if (mins <= 10) return "#ffdd57";
+  }
+  return "white";
 }
 
 function formatDisplay(display: string): string {
-  return display.toLowerCase() === "nu" ? "Now" : display;
+  return display === "Nu" ? "Now" : display;
 }
 
 function SiteDepartures({ id, name }: { id: number; name: string }) {
   const { data, isError } = useDepartures(id);
+  console.log(data);
 
   if (isError) return <p>Failed to load {name}</p>;
 
@@ -41,7 +41,9 @@ function SiteDepartures({ id, name }: { id: number; name: string }) {
             <tr key={i}>
               <td>{d.line.designation}</td>
               <td>{d.destination}</td>
-              <td style={{ color: getTimeColor(d.display) }}>{formatDisplay(d.display)}</td>
+              <td style={{ color: getTimeColor(d.display) }}>
+                {formatDisplay(d.display)}
+              </td>
             </tr>
           ))}
         </tbody>

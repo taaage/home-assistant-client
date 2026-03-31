@@ -92,8 +92,26 @@ body {
 
 .weather-today-details {
   display: flex;
+  align-items: center;
   gap: 1em;
   margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--color-text-bright);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.weather-today-details span {
+  display: flex;
+  align-items: center;
+}
+
+.weather-today-secondary {
+  display: flex;
+  gap: 1.5em;
+  margin-top: 0.75em;
+  padding-top: 0.75em;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 0.85rem;
   color: var(--color-text-bright);
 }
@@ -129,6 +147,7 @@ body {
 
 .weather-day-temps {
   font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .weather-day-sun {

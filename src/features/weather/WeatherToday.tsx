@@ -7,7 +7,7 @@ export function WeatherToday({ data }: { data: WeatherData }) {
 
   return (
     <div className="card weather-today">
-      <h2>{new Date().toLocaleDateString("en-US", { weekday: "long" })} — Today</h2>
+      <h2>Today, {new Date().toLocaleDateString("en-US", { weekday: "long" })}</h2>
       <div className="weather-today-main">
         <span className="weather-today-icon">{getIcon(current.weather_code)}</span>
         <div className="weather-today-info">

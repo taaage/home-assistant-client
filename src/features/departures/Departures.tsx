@@ -6,13 +6,13 @@ const SITES = [
 ];
 
 function getTimeColor(display: string): string {
-  if (display === "Nu") return "#ff5555";
+  if (display === "Nu") return "var(--color-red)";
   if (display.includes("min")) {
     const mins = parseInt(display);
-    if (mins <= 3) return "#ff5555";
-    if (mins <= 10) return "#ffdd57";
+    if (mins <= 3) return "var(--color-red)";
+    if (mins <= 10) return "var(--color-yellow)";
   }
-  return "white";
+  return "var(--color-text-bright)";
 }
 
 function formatDisplay(display: string): string {
@@ -21,12 +21,11 @@ function formatDisplay(display: string): string {
 
 function SiteDepartures({ id, name }: { id: number; name: string }) {
   const { data, isError } = useDepartures(id);
-  console.log(data);
 
   if (isError) return <p>Failed to load {name}</p>;
 
   return (
-    <div>
+    <div className="card">
       <h2>🚌 {name}</h2>
       <table>
         <thead>
@@ -37,7 +36,7 @@ function SiteDepartures({ id, name }: { id: number; name: string }) {
           </tr>
         </thead>
         <tbody>
-          {data?.slice(0, 10).map((d, i) => (
+          {data?.slice(0, 8).map((d, i) => (
             <tr key={i}>
               <td>{d.line.designation}</td>
               <td>{d.destination}</td>

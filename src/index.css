@@ -1,26 +1,70 @@
+@font-face {
+  font-family: "Coolvetica";
+  src: url("/fonts/Coolvetica.ttf") format("truetype");
+}
+
+:root {
+  --color-bg: #585858;
+  --color-text: #cdd6e8;
+  --color-text-bright: #ffffff;
+  --color-accent: #64ffda;
+  --color-purple: #d1a2f9;
+  --color-red: #da3633;
+  --color-yellow: #ffdd57;
+  --color-line: rgba(100, 255, 218, 0.2);
+  --color-surface-hover: rgba(255, 255, 255, 0.05);
+  --color-card: rgb(125, 125, 125);
+}
+
 body {
   font-family: "Courier New", monospace;
-  background-color: #071630;
-  color: #cdd6e8;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   margin: 0;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 2rem;
-  color: #d1a2f9;
-}
-
-h2 {
-  color: #64ffda;
-  font-size: 1.4rem;
-  margin: 1.5em 0 0.5em;
-}
-
 .app {
-  max-width: 680px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 2em;
+}
+
+.app > .greeting {
+  color: var(--color-accent);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.app > h1 {
+  font-family: "Coolvetica";
+  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  letter-spacing: 0.025em;
+  color: var(--color-purple);
+  margin: 0.1em 0 0.5em;
+}
+
+.card {
+  background: var(--color-card);
+  border-radius: 8px;
+  padding: 1.25em 1.5em;
+}
+
+.card h2 {
+  color: var(--color-accent);
+  font-size: 1.4rem;
+  margin: 0 0 0.5em;
+}
+
+.departures {
+  display: flex;
+  gap: 1em;
+}
+
+.departures > .card {
+  flex: 1;
 }
 
 .departures table {
@@ -30,14 +74,14 @@ h2 {
 
 .departures th {
   text-align: left;
-  color: #64ffda;
+  color: var(--color-accent);
   padding: 0.5em 0;
-  border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+  border-bottom: 1px solid var(--color-line);
 }
 
 .departures td {
   padding: 0.4em 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--color-surface-hover);
 }
 
 .departures th:last-child,
@@ -46,6 +90,6 @@ h2 {
 }
 
 .departures td:last-child {
-  color: #d1a2f9;
+  color: var(--color-purple);
   font-weight: 600;
 }

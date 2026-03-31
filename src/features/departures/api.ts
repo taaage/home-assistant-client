@@ -1,8 +1,4 @@
-export type Departure = {
-  destination: string;
-  display: string;
-  line: { designation: string; transport_mode: string };
-};
+import type { Departure } from "./types";
 
 export const fetchDepartures = async (siteId: number): Promise<Departure[]> => {
   const res = await fetch(

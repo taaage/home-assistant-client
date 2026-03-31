@@ -169,6 +169,62 @@ body {
   font-weight: 600;
 }
 
+.nameday {
+  margin-bottom: 1em;
+  font-size: 0.95rem;
+  color: var(--color-text-bright);
+}
+
+.nameday p {
+  margin: 0.25em 0;
+}
+
+.birthdays {
+  display: flex;
+  gap: 1.5em;
+  margin-top: 0.5em;
+  font-size: 0.85rem;
+}
+
+.disruptions {
+  margin-top: 1em;
+}
+
+.disruptions-empty {
+  color: var(--color-accent);
+}
+
+.disruption-group h3 {
+  font-size: 1rem;
+  color: var(--color-text-bright);
+  margin: 0.75em 0 0.25em;
+}
+
+.disruption-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.disruption-group li {
+  padding: 0.3em 0;
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--color-surface-hover);
+}
+
+.disruption-group li:last-child {
+  border-bottom: none;
+}
+
+.disruption-group strong {
+  color: var(--color-yellow);
+}
+
+.disruption-more {
+  color: var(--color-text);
+  font-style: italic;
+}
+
 @media screen and (max-width: 600px) {
   .app {
     padding: 1.25em;

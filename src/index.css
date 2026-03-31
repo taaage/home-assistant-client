@@ -193,20 +193,35 @@ body {
   font-weight: 600;
 }
 
-.birthdays {
+.info-row {
+  display: flex;
+  gap: 1em;
   margin-bottom: 1em;
+}
+
+.info-nameday {
+  flex: 1;
   color: var(--color-text-bright);
 }
 
-.birthdays ul {
+.info-birthdays {
+  flex: 2;
+  color: var(--color-text-bright);
+}
+
+.info-row ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.birthdays li {
+.info-row li {
   padding: 0.3em 0;
   font-size: 0.9rem;
+}
+
+.info-row p {
+  margin: 0;
 }
 
 .disruptions {

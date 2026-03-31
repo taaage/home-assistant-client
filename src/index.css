@@ -58,6 +58,10 @@ body {
   margin: 0 0 0.5em;
 }
 
+.weather {
+  margin-bottom: 1em;
+}
+
 .departures {
   display: flex;
   gap: 1em;

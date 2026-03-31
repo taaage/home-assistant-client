@@ -1,19 +1,16 @@
-import { useNameDay } from "./useNameDay";
-import { formatBirthdays } from "./utils";
+import { getBirthdays } from "./utils";
 
-export default function NameDay() {
-  const { data } = useNameDay();
+export default function Birthdays() {
+  const birthdays = getBirthdays();
 
   return (
-    <div className="card nameday">
-      {data?.length ? (
-        <p>
-          👦👧 Namedays: <strong>{data.join(", ")}</strong>
-        </p>
-      ) : null}
-      <p>
-        🎂🍰 Birthdays: <strong>{formatBirthdays()}</strong>
-      </p>
+    <div className="card birthdays">
+      <h2>🎂 Birthdays</h2>
+      <ul>
+        {birthdays.map((b) => (
+          <li key={b.name}>{b.icon} {b.name} — {b.label}</li>
+        ))}
+      </ul>
     </div>
   );
 }

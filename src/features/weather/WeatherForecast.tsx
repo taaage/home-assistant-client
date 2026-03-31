@@ -15,7 +15,7 @@ export function WeatherForecast({ data }: { data: WeatherData }) {
           <span className="weather-day-name">{formatDay(day)}</span>
           <span>{getIcon(daily.weather_code[i])}</span>
           <span className="weather-day-temps">
-            {Math.round(daily.temperature_2m_max[i])}° / {Math.round(daily.temperature_2m_min[i])}°
+            {Math.round(daily.apparent_temperature_max[i])}° / {Math.round(daily.apparent_temperature_min[i])}°
           </span>
           <span className="weather-day-sun">☀️ {formatTime(daily.sunrise[i])}</span>
           <span className="weather-day-sun">🌙 {formatTime(daily.sunset[i])}</span>

@@ -12,8 +12,8 @@ export const fetchWeather = async (): Promise<WeatherData> => {
   const params = new URLSearchParams({
     latitude: LAT,
     longitude: LON,
-    current: "temperature_2m,weather_code,wind_speed_10m,relative_humidity_2m",
-    daily: "temperature_2m_max,temperature_2m_min,weather_code,sunrise,sunset",
+    current: "apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m,precipitation",
+    daily: "apparent_temperature_max,apparent_temperature_min,weather_code,sunrise,sunset",
     timezone: "Europe/Stockholm",
     past_days: String(daysSinceMonday),
     forecast_days: String(daysUntilSunday),

@@ -1,14 +1,17 @@
 import { useDepartures } from "./useDepartures";
 import { SITES, getTimeColor, formatDisplay } from "./utils";
+import type { SiteConfig } from "./utils";
 
-function SiteDepartures({ id, name }: { id: number; name: string }) {
+function SiteDepartures({ id, name, icon, filter }: SiteConfig) {
   const { data, isError } = useDepartures(id);
 
   if (isError) return <p>Failed to load {name}</p>;
 
+  const filtered = filter ? data?.filter(filter) : data;
+
   return (
     <div className="card">
-      <h2>🚌 {name}</h2>
+      <h2>{icon} {name}</h2>
       <table>
         <thead>
           <tr>
@@ -18,7 +21,7 @@ function SiteDepartures({ id, name }: { id: number; name: string }) {
           </tr>
         </thead>
         <tbody>
-          {data?.slice(0, 8).map((d, i) => (
+          {filtered?.slice(0, 8).map((d, i) => (
             <tr key={i}>
               <td>{d.line.designation}</td>
               <td>{d.destination}</td>

@@ -27,7 +27,7 @@ export default function Disruptions() {
           <ul>
             {items.map((m, i) => (
               <li key={i}>
-                <strong>{m.scope_alias}</strong> — {m.header}
+                <strong>Line {m.lines.join(", ")}</strong> — {m.header}
               </li>
             ))}
           </ul>

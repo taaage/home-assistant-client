@@ -1,6 +1,37 @@
-export const SITES = [
-  { id: 3470, name: "Brotorp" },
-  { id: 3549, name: "Råsta" },
+export type SiteConfig = {
+  id: number;
+  name: string;
+  icon: string;
+  filter?: (d: {
+    line: { designation: string; transport_mode: string };
+  }) => boolean;
+};
+
+export const SITES: SiteConfig[] = [
+  {
+    id: 3470,
+    name: "Brotorp",
+    icon: "🚌",
+    filter: (d) => d.line.transport_mode === "BUS",
+  },
+  {
+    id: 3549,
+    name: "Råsta",
+    icon: "🚌",
+    filter: (d) => d.line.transport_mode === "BUS",
+  },
+  {
+    id: 9303,
+    name: "Hallonbergen",
+    icon: "🚇",
+    filter: (d) => d.line.transport_mode === "METRO",
+  },
+  {
+    id: 9508,
+    name: "Ulriksdal",
+    icon: "🚆🚌",
+    filter: (d) => d.line.designation !== "509",
+  },
 ];
 
 export function getTimeColor(display: string): string {

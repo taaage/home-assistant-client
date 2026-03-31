@@ -1,12 +1,6 @@
 import type { Disruption } from "./types";
 
-type GroupedMode = {
-  label: string;
-  icon: string;
-  mode: string;
-};
-
-const MODES: GroupedMode[] = [
+const MODES = [
   { label: "Metro", icon: "🚇", mode: "METRO" },
   { label: "Roslagsbanan", icon: "🚃", mode: "TRAM" },
   { label: "Bus", icon: "🚌", mode: "BUS" },
@@ -17,8 +11,6 @@ const FILTERS: Record<string, Set<string>> = {
   TRAM: new Set(["28", "29"]),
   BUS: new Set(["501", "505", "519", "540"]),
 };
-
-const BUS_LIMIT = 5;
 
 export function groupByMode(disruptions: Disruption[]) {
   return MODES.map(({ label, icon, mode }) => {
@@ -33,5 +25,3 @@ export function groupByMode(disruptions: Disruption[]) {
     return { label, icon, mode, items: unique };
   }).filter((g) => g.items.length > 0);
 }
-
-export { BUS_LIMIT };

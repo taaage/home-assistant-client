@@ -179,13 +179,6 @@ body {
   margin: 0.25em 0;
 }
 
-.birthdays {
-  display: flex;
-  gap: 1.5em;
-  margin-top: 0.5em;
-  font-size: 0.85rem;
-}
-
 .disruptions {
   margin-top: 1em;
 }
@@ -218,11 +211,6 @@ body {
 
 .disruption-group strong {
   color: var(--color-yellow);
-}
-
-.disruption-more {
-  color: var(--color-text);
-  font-style: italic;
 }
 
 @media screen and (max-width: 600px) {

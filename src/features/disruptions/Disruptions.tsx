@@ -21,22 +21,18 @@ export default function Disruptions() {
   return (
     <div className="card disruptions">
       <h2>⚠️ SL Disruptions</h2>
-      {groups.map(({ label, icon, mode, items }) => {
-        const shown = items;
-
-        return (
-          <div key={mode} className="disruption-group">
-            <h3>{icon} {label}</h3>
-            <ul>
-              {shown.map((m, i) => (
-                <li key={i}>
-                  <strong>{m.scope_alias}</strong> — {m.header}
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
-      })}
+      {groups.map(({ label, icon, mode, items }) => (
+        <div key={mode} className="disruption-group">
+          <h3>{icon} {label}</h3>
+          <ul>
+            {items.map((m, i) => (
+              <li key={i}>
+                <strong>{m.scope_alias}</strong> — {m.header}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
 }

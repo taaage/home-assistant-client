@@ -156,3 +156,23 @@ body {
   color: var(--color-purple);
   font-weight: 600;
 }
+
+@media screen and (max-width: 600px) {
+  .app {
+    padding: 1.25em;
+  }
+
+  .weather-current {
+    flex-wrap: wrap;
+  }
+
+  .weather-forecast {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5em;
+  }
+
+  .departures {
+    flex-direction: column;
+  }
+}

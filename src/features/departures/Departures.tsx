@@ -5,33 +5,38 @@ import type { SiteConfig } from "./utils";
 function SiteDepartures({ id, name, icon, filter }: SiteConfig) {
   const { data, isError } = useDepartures(id);
 
-  if (isError) return <p>Failed to load {name}</p>;
-
   const filtered = filter ? data?.filter(filter) : data;
+  const rows = filtered?.slice(0, 8);
 
   return (
     <div className="card">
       <h2>{icon} {name}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Line</th>
-            <th>Destination</th>
-            <th>Departs</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filtered?.slice(0, 8).map((d, i) => (
-            <tr key={i}>
-              <td>{d.line.designation}</td>
-              <td>{d.destination}</td>
-              <td style={{ color: getTimeColor(d.display) }}>
-                {formatDisplay(d.display)}
-              </td>
+      {isError && !rows?.length ? (
+        <p>Failed to load {name}</p>
+      ) : !rows?.length ? (
+        <p>No departures</p>
+      ) : (
+        <table>
+          <thead>
+            <tr>
+              <th>Line</th>
+              <th>Destination</th>
+              <th>Departs</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {rows.map((d, i) => (
+              <tr key={i}>
+                <td>{d.line.designation}</td>
+                <td>{d.destination}</td>
+                <td style={{ color: getTimeColor(d.display) }}>
+                  {formatDisplay(d.display)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }

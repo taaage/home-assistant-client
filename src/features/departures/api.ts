@@ -4,6 +4,7 @@ export const fetchDepartures = async (siteId: number): Promise<Departure[]> => {
   const res = await fetch(
     `https://transport.integration.sl.se/v1/sites/${siteId}/departures`
   );
+  if (!res.ok) throw new Error(`Departures API ${res.status}`);
   const data = await res.json();
   return data.departures ?? [];
 };

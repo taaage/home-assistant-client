@@ -15,7 +15,7 @@ function daysUntilBirthday(month: number, day: number) {
 export function getBirthdays() {
   return BIRTHDAYS.map(({ name, month, day, icon }) => {
     const days = daysUntilBirthday(month, day);
-    const label = days === 0 ? "Today! 🎉" : `in ${days} days`;
+    const label = `${days} days`;
     return { name, icon, label };
   });
 }

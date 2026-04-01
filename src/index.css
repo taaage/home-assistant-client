@@ -124,6 +124,12 @@ body {
   font-weight: 600;
 }
 
+.weather-day-main {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
 .weather-day-temps {
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
@@ -204,6 +210,11 @@ body {
   color: var(--color-text-bright);
 }
 
+.now-playing {
+  flex: 1;
+  color: var(--color-text-bright);
+}
+
 .info-birthdays {
   flex: 2;
   color: var(--color-text-bright);
@@ -222,6 +233,50 @@ body {
 
 .info-row p {
   margin: 0;
+}
+
+.now-playing {
+  color: var(--color-text-bright);
+}
+
+.now-playing-idle {
+  color: var(--color-text);
+  font-style: italic;
+}
+
+.now-playing-track {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.now-playing-art {
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+}
+
+.now-playing-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+
+.now-playing-name {
+  font-weight: 600;
+  color: var(--color-text-bright);
+  font-size: 0.95rem;
+}
+
+.now-playing-artist {
+  color: var(--color-text);
+  font-size: 0.85rem;
+}
+
+.now-playing-album {
+  color: var(--color-text);
+  font-size: 0.75rem;
+  opacity: 0.7;
 }
 
 .disruptions {

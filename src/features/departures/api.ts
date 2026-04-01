@@ -6,5 +6,7 @@ export const fetchDepartures = async (siteId: number): Promise<Departure[]> => {
   );
   if (!res.ok) throw new Error(`Departures API ${res.status}`);
   const data = await res.json();
-  return data.departures ?? [];
+  const departures = data.departures ?? [];
+  if (departures.length === 0) throw new Error("Empty response");
+  return departures;
 };

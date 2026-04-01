@@ -356,4 +356,8 @@ body {
   .departures::-webkit-scrollbar {
     display: none;
   }
+
+  .info-row {
+    flex-wrap: wrap;
+  }
 }

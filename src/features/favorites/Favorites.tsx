@@ -31,7 +31,7 @@ function FavoriteItem({ siteId, line, destination, icon }: Favorite) {
   return (
     <div className="favorite-item">
       <span>
-        {icon} {line}
+        {icon} {line} {destination}
       </span>
       <span className="favorite-time">
         {next ? formatDisplay(next.display) : "—"}

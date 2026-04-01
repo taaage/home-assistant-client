@@ -12,8 +12,10 @@ export const fetchWeather = async (): Promise<WeatherData> => {
   const params = new URLSearchParams({
     latitude: LAT,
     longitude: LON,
-    current: "apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m,precipitation",
-    daily: "apparent_temperature_max,apparent_temperature_min,weather_code,sunrise,sunset",
+    current:
+      "apparent_temperature,weather_code,wind_speed_10m,relative_humidity_2m,precipitation",
+    daily:
+      "apparent_temperature_max,apparent_temperature_min,weather_code,sunrise,sunset",
     timezone: "Europe/Stockholm",
     past_days: String(daysSinceMonday),
     forecast_days: String(daysUntilSunday),
@@ -22,7 +24,7 @@ export const fetchWeather = async (): Promise<WeatherData> => {
   const [forecast, geo] = await Promise.all([
     fetch(`${BASE}?${params}`).then((r) => r.json()),
     fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${LAT}&lon=${LON}&format=json&zoom=10`
+      `https://nominatim.openstreetmap.org/reverse?lat=${LAT}&lon=${LON}&format=json&zoom=10`,
     ).then((r) => r.json()),
   ]);
   const addr = geo.address ?? {};

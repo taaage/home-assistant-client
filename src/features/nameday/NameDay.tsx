@@ -7,8 +7,14 @@ export default function NameDay() {
     <div className="card info-nameday">
       <h2>👦👧 Namedays</h2>
       {data?.length ? (
-        <ul>{data.map((n) => <li key={n}>{n}</li>)}</ul>
-      ) : <p>—</p>}
+        <ul>
+          {data.map((n) => (
+            <li key={n}>{n}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>—</p>
+      )}
     </div>
   );
 }

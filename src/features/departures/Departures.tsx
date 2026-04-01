@@ -1,6 +1,6 @@
 import { useDepartures } from "./useDepartures";
-import { SITES, getTimeColor, formatDisplay } from "./utils";
 import type { SiteConfig } from "./utils";
+import { SITES, formatDisplay, getTimeColor } from "./utils";
 
 function SiteDepartures({ id, name, icon, filter }: SiteConfig) {
   const { data, isError } = useDepartures(id);
@@ -10,7 +10,9 @@ function SiteDepartures({ id, name, icon, filter }: SiteConfig) {
 
   return (
     <div className="card">
-      <h2>{icon} {name}</h2>
+      <h2>
+        {icon} {name}
+      </h2>
       {isError && !rows?.length ? (
         <p>Failed to load {name}</p>
       ) : !rows?.length ? (

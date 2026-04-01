@@ -4,8 +4,18 @@ import { groupByMode } from "./utils";
 export default function Disruptions() {
   const { data, isError } = useDisruptions();
 
-  if (isError) return <div className="card"><p>Failed to load disruptions</p></div>;
-  if (!data) return <div className="card"><p>Loading disruptions...</p></div>;
+  if (isError)
+    return (
+      <div className="card">
+        <p>Failed to load disruptions</p>
+      </div>
+    );
+  if (!data)
+    return (
+      <div className="card">
+        <p>Loading disruptions...</p>
+      </div>
+    );
 
   const groups = groupByMode(data);
 
@@ -23,7 +33,9 @@ export default function Disruptions() {
       <h2>⚠️ SL Disruptions</h2>
       {groups.map(({ label, icon, mode, items }) => (
         <div key={mode} className="disruption-group">
-          <h3>{icon} {label}</h3>
+          <h3>
+            {icon} {label}
+          </h3>
           <ul>
             {items.map((m, i) => (
               <li key={i}>

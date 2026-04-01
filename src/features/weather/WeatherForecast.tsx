@@ -16,11 +16,16 @@ export function WeatherForecast({ data }: { data: WeatherData }) {
           <span className="weather-day-main">
             <span>{getIcon(daily.weather_code[i])}</span>
             <span className="weather-day-temps">
-              {Math.round(daily.apparent_temperature_max[i])}° / {Math.round(daily.apparent_temperature_min[i])}°
+              {Math.round(daily.apparent_temperature_max[i])}° /{" "}
+              {Math.round(daily.apparent_temperature_min[i])}°
             </span>
           </span>
-          <span className="weather-day-sun">☀️ {formatTime(daily.sunrise[i])}</span>
-          <span className="weather-day-sun">🌙 {formatTime(daily.sunset[i])}</span>
+          <span className="weather-day-sun">
+            ☀️ {formatTime(daily.sunrise[i])}
+          </span>
+          <span className="weather-day-sun">
+            🌙 {formatTime(daily.sunset[i])}
+          </span>
         </div>
       ))}
     </div>

@@ -6,8 +6,10 @@ import type { SpotifyTrack } from "./types";
 const MOCK: SpotifyTrack = {
   name: "The Shire",
   artist: "Howard Shore",
-  album: "The Lord of the Rings: The Fellowship of the Ring - the Complete Recordings",
-  albumArt: "https://lastfm.freetls.fastly.net/i/u/300x300/793df2135a742aefbe54fb9d6da6aaa4.jpg",
+  album:
+    "The Lord of the Rings: The Fellowship of the Ring - the Complete Recordings",
+  albumArt:
+    "https://lastfm.freetls.fastly.net/i/u/300x300/793df2135a742aefbe54fb9d6da6aaa4.jpg",
   isPlaying: true,
 };
 

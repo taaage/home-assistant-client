@@ -1,6 +1,6 @@
-import { useDepartures } from "../departures/useDepartures";
-import { getTimeColor, formatDisplay } from "../departures/utils";
 import type { Departure } from "../departures/types";
+import { useDepartures } from "../departures/useDepartures";
+import { formatDisplay } from "../departures/utils";
 
 type Favorite = {
   siteId: number;

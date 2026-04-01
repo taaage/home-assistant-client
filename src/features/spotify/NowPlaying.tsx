@@ -20,7 +20,6 @@ export default function NowPlaying() {
         <div className="now-playing-info">
           <span className="now-playing-name">{data.name}</span>
           <span className="now-playing-artist">{data.artist}</span>
-          {/* <span className="now-playing-album">{data.album}</span> */}
         </div>
       </div>
     </div>

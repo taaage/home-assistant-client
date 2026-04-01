@@ -8,7 +8,9 @@ export default function Birthdays() {
       <h2>🎂 Birthdays</h2>
       <ul>
         {birthdays.map((b) => (
-          <li key={b.name}>{b.icon} {b.name} — {b.label}</li>
+          <li key={b.name}>
+            {b.icon} {b.name} — {b.label}
+          </li>
         ))}
       </ul>
     </div>

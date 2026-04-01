@@ -303,20 +303,39 @@ body {
 }
 
 .lights {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  display: flex;
   gap: 0.5em;
   margin-top: 1em;
-  max-width: 50%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.lights::-webkit-scrollbar {
+  display: none;
 }
 
 .light-card {
   text-align: center;
+  min-width: 120px;
+  flex: 1;
+  padding: 0.6em 0.5em;
+}
+
+.light-icon {
+  font-size: 1.4rem;
+}
+
+.light-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-bright);
 }
 
 .light-status {
   margin: 0;
   color: var(--color-text);
+  font-size: 0.75rem;
   font-style: italic;
 }
 

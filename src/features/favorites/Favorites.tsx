@@ -1,4 +1,5 @@
 import { useDepartures } from "../departures/useDepartures";
+import { getTimeColor, formatDisplay } from "../departures/utils";
 import type { Departure } from "../departures/types";
 
 type Favorite = {
@@ -32,7 +33,9 @@ function FavoriteItem({ siteId, line, destination, icon }: Favorite) {
       <span>
         {icon} {line}
       </span>
-      <span className="favorite-time">{next?.display ?? "—"}</span>
+      <span className="favorite-time">
+        {next ? formatDisplay(next.display) : "—"}
+      </span>
     </div>
   );
 }

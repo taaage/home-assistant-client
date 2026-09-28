@@ -3,47 +3,60 @@
   src: url("/fonts/Coolvetica.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Consonlas";
+  src: url("/fonts/CONSOLAB.ttf") format("truetype");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --color-bg: #585858;
-  --color-text: #cdd6e8;
-  --color-text-bright: #ffffff;
+  --color-bg: #09090b;
+  --color-text: #a1a1aa;
+  --color-text-bright: #fafafa;
+  --color-text-muted: #71717a;
   --color-accent: #64ffda;
   --color-purple: #d1a2f9;
   --color-red: #da3633;
   --color-yellow: #ffdd57;
+  --color-border: #27272a;
   --color-line: rgba(100, 255, 218, 0.2);
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface-input: rgba(255, 255, 255, 0.04);
   --color-surface-hover: rgba(255, 255, 255, 0.05);
-  --color-card: rgb(125, 125, 125);
+  --color-card: #111113;
 }
 
 body {
-  font-family: "Courier New", monospace;
+  font-family: "Consonlas", "Courier New", monospace;
   background-color: var(--color-bg);
   color: var(--color-text);
   margin: 0;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+select {
+  font: inherit;
 }
 
 /* Layout */
-
-.app {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 2em;
-}
 
 .app > h1 {
   font-family: "Coolvetica";
   font-size: clamp(2.8rem, 6vw, 4.6rem);
   letter-spacing: 0.025em;
   color: var(--color-purple);
-  margin: 0.1em 0 0.5em;
+  margin: 0.1em 0 0;
 }
 
 .card {
-  background: var(--color-card);
-  border-radius: 8px;
-  padding: 1.25em 1.5em;
+  @apply bg-surface-card border border-surface-border rounded-3xl p-5;
 }
 
 .card h2 {
@@ -73,13 +86,10 @@ body {
   margin: 0;
 }
 
-/* Favorites */
-
 .favorites {
   display: flex;
   align-items: center;
   gap: 1.5em;
-  margin-bottom: 1em;
   color: var(--color-text-bright);
   font-size: 0.95rem;
   line-height: 1;
@@ -98,10 +108,8 @@ body {
   color: var(--color-text-bright);
 }
 
-/* Weather */
-
 .weather-today {
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 
 .weather-today-layout {
@@ -155,7 +163,7 @@ body {
 .weather-forecast {
   display: flex;
   gap: 0.75em;
-  margin-bottom: 1em;
+  margin-bottom: 0;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -311,7 +319,6 @@ body {
 .lights {
   display: flex;
   gap: 0.5em;
-  margin-top: 1em;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -348,7 +355,7 @@ body {
 /* Disruptions */
 
 .disruptions {
-  margin-top: 1em;
+  margin-top: 0;
 }
 
 .disruptions-empty {
@@ -383,11 +390,13 @@ body {
 
 /* Mobile */
 
-@media screen and (max-width: 600px) {
-  .app {
-    padding: 1.25em;
+@media screen and (min-width: 640px) {
+  .card {
+    @apply p-8;
   }
+}
 
+@media screen and (max-width: 600px) {
   .weather-today-layout {
     flex-direction: column;
     align-items: flex-start;

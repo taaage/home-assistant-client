@@ -1,12 +1,4 @@
-@font-face {
-  font-family: "Coolvetica";
-  src: url("/fonts/Coolvetica.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "Consonlas";
-  src: url("/fonts/CONSOLAB.ttf") format("truetype");
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -27,10 +19,16 @@
   --color-surface-input: rgba(255, 255, 255, 0.04);
   --color-surface-hover: rgba(255, 255, 255, 0.05);
   --color-card: #111113;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
 }
 
 body {
-  font-family: "Consonlas", "Courier New", monospace;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: var(--font-size-base);
   background-color: var(--color-bg);
   color: var(--color-text);
   margin: 0;
@@ -48,8 +46,7 @@ select {
 /* Layout */
 
 .app > h1 {
-  font-family: "Coolvetica";
-  font-size: clamp(2.8rem, 6vw, 4.6rem);
+  font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: 0.025em;
   color: var(--color-purple);
   margin: 0.1em 0 0;
@@ -61,7 +58,7 @@ select {
 
 .card h2 {
   color: var(--color-text-bright);
-  font-size: 1.4rem;
+  font-size: var(--font-size-xl);
   margin: 0 0 0.5em;
 }
 
@@ -79,7 +76,7 @@ select {
 
 .info-row li {
   padding: 0.3em 0;
-  font-size: 0.9rem;
+  font-size: var(--font-size-sm);
 }
 
 .info-row p {
@@ -91,7 +88,7 @@ select {
   align-items: center;
   gap: 1.5em;
   color: var(--color-text-bright);
-  font-size: 0.95rem;
+  font-size: var(--font-size-base);
   line-height: 1;
 }
 
@@ -135,7 +132,7 @@ select {
 }
 
 .weather-today-location {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: 600;
   color: var(--color-text-bright);
 }
@@ -151,7 +148,7 @@ select {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.75em 3em;
-  font-size: 0.85rem;
+  font-size: var(--font-size-sm);
   color: var(--color-text-bright);
 }
 
@@ -184,7 +181,7 @@ select {
 }
 
 .weather-day-name {
-  font-size: 0.8rem;
+  font-size: var(--font-size-sm);
   color: var(--color-text-bright);
   font-weight: 600;
 }
@@ -196,12 +193,12 @@ select {
 }
 
 .weather-day-temps {
-  font-size: 0.8rem;
+  font-size: var(--font-size-sm);
   font-variant-numeric: tabular-nums;
 }
 
 .weather-day-sun {
-  font-size: 0.7rem;
+  font-size: var(--font-size-xs);
 }
 
 /* Now Playing */
@@ -237,12 +234,12 @@ select {
 .now-playing-name {
   font-weight: 600;
   color: var(--color-text-bright);
-  font-size: 0.95rem;
+  font-size: var(--font-size-base);
 }
 
 .now-playing-artist {
   color: var(--color-text);
-  font-size: 0.85rem;
+  font-size: var(--font-size-sm);
 }
 
 /* Birthdays */
@@ -290,6 +287,7 @@ select {
 .departures table {
   width: 100%;
   border-collapse: collapse;
+  font-size: var(--font-size-sm);
 }
 
 .departures th {
@@ -329,10 +327,37 @@ select {
 }
 
 .light-card {
+  appearance: none;
+  color: inherit;
+  font: inherit;
   text-align: center;
   min-width: 120px;
   flex: 1;
   padding: 0.6em 0.5em;
+  cursor: pointer;
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease,
+    transform 100ms ease;
+}
+
+.light-card:hover {
+  background-color: var(--color-surface-hover);
+  border-color: #52525b;
+}
+
+.light-card:active {
+  transform: scale(0.97);
+}
+
+.light-card:focus-visible {
+  outline: 2px solid var(--color-text-bright);
+  outline-offset: 2px;
+}
+
+.light-status-on {
+  color: #4ade80;
+  font-style: normal;
 }
 
 .light-icon {
@@ -340,7 +365,7 @@ select {
 }
 
 .light-name {
-  font-size: 0.85rem;
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: var(--color-text-bright);
 }
@@ -348,7 +373,7 @@ select {
 .light-status {
   margin: 0;
   color: var(--color-text);
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-style: italic;
 }
 
@@ -363,7 +388,7 @@ select {
 }
 
 .disruption-group h3 {
-  font-size: 1rem;
+  font-size: var(--font-size-lg);
   color: var(--color-text-bright);
   margin: 0.75em 0 0.25em;
 }
@@ -376,7 +401,7 @@ select {
 
 .disruption-group li {
   padding: 0.3em 0;
-  font-size: 0.85rem;
+  font-size: var(--font-size-sm);
   border-bottom: 1px solid var(--color-surface-hover);
 }
 

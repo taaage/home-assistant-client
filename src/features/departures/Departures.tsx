@@ -6,7 +6,7 @@ function SiteDepartures({ id, name, icon, filter }: SiteConfig) {
   const { data, isError } = useDepartures(id);
 
   const filtered = filter ? data?.filter(filter) : data;
-  const rows = filtered?.slice(0, 8);
+  const rows = filtered?.slice(0, 5);
 
   return (
     <div className="card">
